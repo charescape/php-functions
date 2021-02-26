@@ -1,22 +1,14 @@
 {
     "name": "charescape/php-functions",
-    "description": "php functions",
-    "keywords": [
-        "php",
-        "function",
-        "functions"
-    ],
+    "type": "library",
+    "description": "",
+    "keywords": [],
     "homepage": "https://github.com/charescape/php-functions",
     "license": "BSD-3-Clause",
-    "authors": [
-        {
-            "name": "charescape",
-            "email": "charescape@outlook.com",
-            "homepage": "https://github.com/charescape"
-        }
-    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "php": "^7.4"
+        "php": "^7.0|^8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3"
@@ -29,6 +21,11 @@
     "autoload-dev": {
         "psr-4": {
             "Charescape\\PhpFunctions\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
         }
     },
     "config": {
