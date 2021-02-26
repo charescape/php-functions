@@ -23,7 +23,7 @@
     },
     "autoload": {
         "files": [
-            "functions.php"
+            "src/functions.php"
         ]
     },
     "autoload-dev": {

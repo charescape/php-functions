@@ -16,3 +16,11 @@ if (!function_exists('_is_full_string')) {
     }
 }
 
+if (!function_exists('_minify_html')) {
+    function _minify_html(string $html): string {
+        $html = preg_replace('/^\s+[<]+/m', '<', $html);
+
+        return $html;
+    }
+}
+
