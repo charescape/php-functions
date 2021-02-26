@@ -5,6 +5,14 @@
     "keywords": [],
     "homepage": "https://github.com/charescape/php-functions",
     "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "charescape",
+            "email": "charescape@outlook.com",
+            "homepage": "https://github.com/charescape",
+            "role": "Developer"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
