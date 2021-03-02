@@ -24,3 +24,9 @@ if (!function_exists('_minify_html')) {
     }
 }
 
+if (!function_exists('json_encode_320')) {
+    function json_encode_320($value): string {
+        return json_encode($value, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+    }
+}
+
