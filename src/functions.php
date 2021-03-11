@@ -36,3 +36,14 @@ if (!function_exists('json_decode_320')) {
     }
 }
 
+if (!function_exists('mb_strpos_utf8')) {
+    /**
+     * @param string $haystack The string being checked.
+     * @param string $needle The string to find in haystack.
+     * @return false|int Returns the numeric position of the first occurrence of needle in the haystack string. If needle is not found, it returns false.
+     */
+    function mb_strpos_utf8(string $haystack , string $needle) {
+        return mb_strpos($haystack, $needle, 0, 'UTF-8');
+    }
+}
+
