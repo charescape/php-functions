@@ -47,3 +47,17 @@ if (!function_exists('mb_strpos_utf8')) {
     }
 }
 
+if (!function_exists('pf_query_string')) {
+    function pf_query_string(bool $with_prefix = true): string {
+        if (!isset($_SERVER['QUERY_STRING'])) {
+            return '';
+        }
+
+        if (_is_empty_string($_SERVER['QUERY_STRING'])) {
+            return '';
+        }
+
+        return ($with_prefix ? '?' : '') . trim($_SERVER['QUERY_STRING']);
+    }
+}
+
