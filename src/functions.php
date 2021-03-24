@@ -67,3 +67,8 @@ if (!function_exists('pf_split_string_using_rn')) {
     }
 }
 
+if (!function_exists('pf_mt_rand')) {
+    function pf_mt_rand(int $min, int $max): int {
+        return mt_rand($min, $max);
+    }
+}
