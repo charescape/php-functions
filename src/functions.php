@@ -61,6 +61,12 @@ if (!function_exists('pf_query_string')) {
     }
 }
 
+if (!function_exists('pf_http_build_query_rfc3986')) {
+    function pf_http_build_query_rfc3986(array $query): string {
+        return http_build_query($query, '', '&', PHP_QUERY_RFC3986);
+    }
+}
+
 if (!function_exists('pf_split_string_using_rn')) {
     function pf_split_string_using_rn(string $haystack): array {
         return preg_split('/\r\n|\n|\r/', $haystack);
