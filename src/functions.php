@@ -82,7 +82,7 @@ if (!function_exists('pf_query_string')) {
             return '';
         }
 
-        if (_is_empty_string($_SERVER['QUERY_STRING'])) {
+        if (pf_is_empty_string($_SERVER['QUERY_STRING'])) {
             return '';
         }
 
