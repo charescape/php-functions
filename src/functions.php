@@ -67,3 +67,14 @@ if (!function_exists('pf_split_string_using_rn')) {
     }
 }
 
+if (!function_exists('pf_urlsafe_b64encode')) {
+    function pf_urlsafe_b64encode(string $s): string {
+        return str_replace(['+', '/', '='], ['-', '_', '.'], base64_encode($s));
+    }
+}
+
+if (!function_exists('pf_urlsafe_b64decode')) {
+    function pf_urlsafe_b64decode(string $s): string {
+        return base64_encode(str_replace(['-', '_', '.'], ['+', '/', '='], $s));
+    }
+}
