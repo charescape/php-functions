@@ -78,3 +78,9 @@ if (!function_exists('pf_urlsafe_b64decode')) {
         return base64_encode(str_replace(['-', '_', '.'], ['+', '/', '='], $s));
     }
 }
+
+if (!function_exists('pf_mt_rand')) {
+    function pf_mt_rand(int $min, int $max): int {
+        return mt_rand($min, $max);
+    }
+}
