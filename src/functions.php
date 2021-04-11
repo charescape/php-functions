@@ -110,7 +110,7 @@ if (!function_exists('pf_urlsafe_b64encode')) {
 
 if (!function_exists('pf_urlsafe_b64decode')) {
     function pf_urlsafe_b64decode(string $s): string {
-        return base64_encode(str_replace(['-', '_', '.'], ['+', '/', '='], $s));
+        return base64_decode(str_replace(['-', '_', '.'], ['+', '/', '='], $s));
     }
 }
 
