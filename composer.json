@@ -25,7 +25,8 @@
     },
     "autoload": {
         "files": [
-            "src/functions.php"
+            "src/functions.php",
+            "src/is.php"
         ]
     },
     "autoload-dev": {
