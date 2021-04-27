@@ -2,6 +2,18 @@
 
 declare(strict_types=1);
 
+if (!function_exists('pf_is_string_filled')) {
+    function pf_is_string_filled($value): bool {
+        return is_string($value) && trim($value) !== '';
+    }
+}
+
+if (!function_exists('pf_is_string_empty')) {
+    function pf_is_string_empty($value): bool {
+        return is_string($value) && trim($value) === '';
+    }
+}
+
 if (!function_exists('pf_is_array_filled')) {
     function pf_is_array_filled($value): bool
     {

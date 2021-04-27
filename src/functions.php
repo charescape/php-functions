@@ -13,6 +13,9 @@ if (!function_exists('_is_empty_string')) {
 }
 
 if (!function_exists('pf_is_empty_string')) {
+    /**
+     * @deprecated since 1.0.0
+     */
     function pf_is_empty_string($value): bool {
         return is_string($value) && trim($value) === '';
     }
@@ -29,6 +32,9 @@ if (!function_exists('_is_full_string')) {
 }
 
 if (!function_exists('pf_is_full_string')) {
+    /**
+     * @deprecated since 1.0.0
+     */
     function pf_is_full_string($value): bool {
         return is_string($value) && trim($value) !== '';
     }
