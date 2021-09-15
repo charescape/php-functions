@@ -40,4 +40,22 @@ class IsTest extends TestCase {
         $this->assertFalse(pf_is_string_filled([], true));
         $this->assertFalse(pf_is_string_filled((object)[], true));
     }
+
+    public function test_pf_is_string_empty()
+    {
+        $this->assertFalse(pf_is_string_empty('abc'));
+        $this->assertFalse(pf_is_string_empty('123'));
+
+        $this->assertTrue(pf_is_string_empty(''));
+        $this->assertTrue(pf_is_string_empty(' '));
+        $this->assertFalse(pf_is_string_empty(0));
+        $this->assertFalse(pf_is_string_empty(123));
+        $this->assertFalse(pf_is_string_empty(123.45));
+        $this->assertFalse(pf_is_string_empty(true));
+        $this->assertFalse(pf_is_string_empty(false));
+
+        $this->assertFalse(pf_is_string_empty(null));
+        $this->assertFalse(pf_is_string_empty([]));
+        $this->assertFalse(pf_is_string_empty((object)[]));
+    }
 }
