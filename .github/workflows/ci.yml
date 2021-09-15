@@ -1,0 +1,80 @@
+on:
+  - pull_request
+  - push
+
+name: "General-CI"
+
+jobs:
+  build:
+    name: "PHP-7.4 MySql-8.0 Nginx-1.19"
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+
+    runs-on: ubuntu-latest
+
+    env:
+      PHP_CMD: '/usr/local/php/bin/php'
+      COMPOSER_CMD: '/usr/local/bin/composer.phar'
+
+    container: charescape/web:5.3.0
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: "Composer self-update"
+        run: ${{ env.PHP_CMD }} ${{ env.COMPOSER_CMD }} self-update -vvv
+
+      - name: "Get Composer Cache Directory"
+        id: Get_Composer_Cache_Directory
+        run: |
+          echo "::set-output name=dir::$(${{ env.PHP_CMD }} ${{ env.COMPOSER_CMD }} config cache-files-dir)"
+
+      - uses: actions/cache@v2.1.6
+        with:
+          path: ${{ steps.Get_Composer_Cache_Directory.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - run: git status
+
+      - name: "Composer install localhost"
+        run: |
+          mkdir -p       /var/www/repos/yiitest/1
+          mkdir -p       /var/www/repos/yiitest/2
+          mkdir -p       /var/www/repos/yiitest/3
+
+          cp    -r  ./*  /var/www/repos/yiitest/3/
+
+          mkdir -p       /var/www/repos/yiitest/shared/runtime
+          chmod -R 777   /var/www/repos/yiitest/shared/runtime
+
+          ${{ env.PHP_CMD }} ${{ env.COMPOSER_CMD }} install --working-dir=/var/www/repos/yiitest/3/ --no-interaction --no-dev --prefer-dist --optimize-autoloader
+
+          ln -s /var/www/repos/yiitest/3 /var/www/repos/yiitest/latest
+
+          chown -R www-data:www-data /var/www/
+
+      - name: "Composer install testing"
+        run: |
+          ${{ env.PHP_CMD }} ${{ env.COMPOSER_CMD }} install --no-interaction
+
+      - name: "Start localhost"
+        run: |
+          rm                            /usr/local/openresty/nginx/conf/nginx.conf
+          cp  ./nginxconf/testing.conf  /usr/local/openresty/nginx/conf/nginx.conf
+          /etc/my_init.d/runapps.sh
+
+      - name: "Update hosts file"
+        run: |
+          echo '127.0.0.1 app.yiitest.com' | tee -a /etc/hosts
+          echo '127.0.0.1 dbapi.ttt.com'   | tee -a /etc/hosts
+
+      - name: "🧪"
+        id: id_phpunit_test
+        run: ${{ env.PHP_CMD }} ./vendor/bin/phpunit
+        continue-on-error: true
+
+      - name: "Finish CI"
+        if: steps.id_phpunit_test.outcome == 'failure'
+        run: exit 1
+
