@@ -3,8 +3,16 @@
 declare(strict_types=1);
 
 if (!function_exists('pf_is_string_filled')) {
-    function pf_is_string_filled($value): bool {
-        return is_string($value) && trim($value) !== '';
+    function pf_is_string_filled($value, bool $allowNumeric = false): bool {
+        if (is_string($value)) {
+            return trim($value) !== '';
+        }
+
+        if ($allowNumeric) {
+            return is_int($value) || is_float($value);
+        }
+
+        return false;
     }
 }
 
