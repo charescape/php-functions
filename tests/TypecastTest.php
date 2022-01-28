@@ -30,10 +30,17 @@ class TypecastTest extends TestCase {
         $this->assertSame('', pf_str_or_null('', false));
         $this->assertSame('', pf_str_or_null(' ', false));
 
+        $this->assertSame('abc', pf_str_or_null('abc', true, false));
+        $this->assertSame('abc ', pf_str_or_null('abc ', true, false));
+        $this->assertSame(' abc', pf_str_or_null(' abc', true, false));
+        $this->assertSame(' abc ', pf_str_or_null(' abc ', true, false));
+        $this->assertNull(pf_str_or_null('', true, false));
+        $this->assertNull(pf_str_or_null(' ', true, false));
+
         $this->assertSame('abc', pf_str_or_null('abc', false, false));
-        $this->assertSame('abc', pf_str_or_null('abc ', false, false));
-        $this->assertSame('abc', pf_str_or_null(' abc', false, false));
-        $this->assertSame('abc', pf_str_or_null(' abc ', false, false));
+        $this->assertSame('abc ', pf_str_or_null('abc ', false, false));
+        $this->assertSame(' abc', pf_str_or_null(' abc', false, false));
+        $this->assertSame(' abc ', pf_str_or_null(' abc ', false, false));
         $this->assertSame('', pf_str_or_null('', false, false));
         $this->assertSame(' ', pf_str_or_null(' ', false, false));
     }
