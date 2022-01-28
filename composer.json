@@ -26,7 +26,8 @@
     "autoload": {
         "files": [
             "src/functions.php",
-            "src/is.php"
+            "src/is.php",
+            "src/typecast.php"
         ]
     },
     "autoload-dev": {
