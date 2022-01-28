@@ -35,6 +35,14 @@
             "Charescape\\PhpFunctions\\Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "redo-install": [
+            "rm -rf vendor/",
+            "rm -f composer.lock",
+            "@composer self-update -vvv",
+            "@composer install -vvv"
+        ]
+    },
     "extra": {
         "branch-alias": {
             "dev-main": "1.0.x-dev"
