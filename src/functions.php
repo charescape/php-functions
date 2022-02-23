@@ -125,3 +125,13 @@ if (!function_exists('pf_mt_rand')) {
         return mt_rand($min, $max);
     }
 }
+
+if (!function_exists('pf_date_format')) {
+    function pf_date_format(int $timestamp = null): string {
+        if ($timestamp === null) {
+            $timestamp = time();
+        }
+
+        return date('Y-m-d H:i:s', $timestamp);
+    }
+}
