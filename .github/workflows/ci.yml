@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "::set-output name=dir::$(${{ env.PHP_CMD }} ${{ env.COMPOSER_CMD }} config cache-files-dir)"
 
-      - uses: actions/cache@v2.1.6
+      - uses: actions/cache@v3.0.2
         with:
           path: ${{ steps.Get_Composer_Cache_Directory.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
