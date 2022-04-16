@@ -7,7 +7,7 @@ namespace Charescape\PhpFunctions\Tests;
 use PHPUnit\Framework\TestCase;
 
 class FunctionsTest extends TestCase {
-    public function pf_mt_rand_without4()
+    public function test_pf_mt_rand_without4()
     {
         $this->assertIsInt(pf_mt_rand_without4(100000, 999999));
 
