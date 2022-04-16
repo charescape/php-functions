@@ -16,7 +16,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^7.3||^8.0",
         "ext-json": "*",
         "ext-mbstring": "*"
     },
@@ -37,7 +37,6 @@
     },
     "scripts": {
         "redo-install": [
-            "rm -rf vendor/",
             "rm -f composer.lock",
             "@composer self-update -vvv",
             "@composer install -vvv"

@@ -126,6 +126,16 @@ if (!function_exists('pf_mt_rand')) {
     }
 }
 
+if (!function_exists('pf_mt_rand_without4')) {
+    function pf_mt_rand_without4(int $min, int $max): int {
+        do {
+            $value = mt_rand($min, $max);
+        } while (strpos((string) $value, '4') !== false);
+
+        return $value;
+    }
+}
+
 if (!function_exists('pf_date_format')) {
     function pf_date_format(int $timestamp = null): string {
         if ($timestamp === null) {
