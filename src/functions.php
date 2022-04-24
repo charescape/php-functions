@@ -145,3 +145,16 @@ if (!function_exists('pf_date_format')) {
         return date('Y-m-d H:i:s', $timestamp);
     }
 }
+
+if (!function_exists('pf_with_round_brackets')) {
+    function pf_with_round_brackets($value, bool $is_pinyin = true): string {
+        $left = $is_pinyin ? '（' : '(';
+        $right = $is_pinyin ? '）' : ')';
+
+        if (pf_is_string_filled($value) || is_int($value)) {
+            return $left . $value . $right;
+        }
+
+        return '';
+    }
+}
