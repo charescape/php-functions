@@ -29,13 +29,13 @@ class FunctionsTest extends TestCase {
     public function test_pf_with_round_brackets()
     {
         $this->assertSame('（你好）', pf_with_round_brackets('你好'));
-        $this->assertSame('(你好)', pf_with_round_brackets('你好', true));
+        $this->assertSame('(你好)', pf_with_round_brackets('你好', false));
         $this->assertSame('（0）', pf_with_round_brackets(0));
-        $this->assertSame('(0)', pf_with_round_brackets(0, true));
+        $this->assertSame('(0)', pf_with_round_brackets(0, false));
         $this->assertSame('（123）', pf_with_round_brackets(123));
-        $this->assertSame('(123)', pf_with_round_brackets(123, true));
+        $this->assertSame('(123)', pf_with_round_brackets(123, false));
         $this->assertSame('', pf_with_round_brackets(''));
-        $this->assertSame('', pf_with_round_brackets('', true));
+        $this->assertSame('', pf_with_round_brackets('', false));
 
         $this->assertSame('', pf_with_round_brackets(false));
         $this->assertSame('', pf_with_round_brackets(true));
