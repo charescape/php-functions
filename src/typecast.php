@@ -24,3 +24,22 @@ if (!function_exists('pf_str_or_null')) {
         return null;
     }
 }
+
+if (!function_exists('pf_string_argument')) {
+    function pf_string_argument($value, $forNull = '')
+    {
+        if ($value === null) {
+            return $forNull;
+        }
+
+        if (is_string($value)) {
+            return $value;
+        }
+
+        if (is_int($value) || is_float($value)) {
+            return ((string)$value);
+        }
+
+        return $value;
+    }
+}
