@@ -26,10 +26,18 @@ if (!function_exists('pf_str_or_null')) {
 }
 
 if (!function_exists('pf_string_argument')) {
-    function pf_string_argument($value, $forNull = '')
+    function pf_string_argument($value, $forNull = '', $forTrue = true, $forFalse = false)
     {
         if ($value === null) {
             return $forNull;
+        }
+
+        if ($value === true) {
+            return $forTrue;
+        }
+
+        if ($value === false) {
+            return $forFalse;
         }
 
         if (is_string($value)) {
