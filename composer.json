@@ -1,7 +1,7 @@
 {
     "name": "charescape/php-functions",
     "type": "library",
-    "description": "",
+    "description": "Convenient and commonly used functions for PHP",
     "keywords": [],
     "homepage": "https://github.com/charescape/php-functions",
     "license": "BSD-3-Clause",
