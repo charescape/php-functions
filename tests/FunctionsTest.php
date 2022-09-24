@@ -50,7 +50,7 @@ class FunctionsTest extends TestCase {
             'https://www.bing.com/search?q=php&form=QBRE&sp=-1&sc=7-15&sk=&ghpl=',
         ];
         $filenames = [
-            'https---www.bing.com))search@@q=php&form=QBRE&sp=-1&sc=7-15&sk=&ghpl=',
+            'https---www.bing.com((search@@q=php&form=QBRE&sp=-1&sc=7-15&sk=&ghpl=',
         ];
 
         foreach ($urls as $i => $url) {
