@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use function Symfony\Component\String\u;
+
 if (!function_exists('_is_empty_string')) {
     /**
      * @deprecated since 1.0.0
@@ -156,5 +158,40 @@ if (!function_exists('pf_with_round_brackets')) {
         }
 
         return '';
+    }
+}
+
+if (!function_exists('pf_url2filename')) {
+    function pf_url2filename(string $url): string
+    {
+        if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+            throw new InvalidArgumentException("Invalid URL: [$url]");
+        }
+
+        $url = u($url)
+            ->replace('https://', 'https---')
+            ->replace('http://', 'http---')
+            ->toString();
+
+        if (!preg_match('#^[a-zA-Z0-9\-_./?=&]+$#', $url)) {
+            throw new InvalidArgumentException("URL contains unspecified special characters: [$url]");
+        }
+
+        return u($url)
+                ->replace('?', '@@')
+                ->replace('/', '((')
+                ->toString();
+    }
+}
+
+if (!function_exists('pf_filename2url')) {
+    function pf_filename2url(string $filename): string
+    {
+        return u($filename)
+                ->replace('https---', 'https://')
+                ->replace('http---', 'http://')
+                ->replace('@@', '?')
+                ->replace('((', '/')
+                ->toString();
     }
 }
