@@ -59,7 +59,7 @@ class FunctionsTest extends TestCase {
 
         foreach ($filenames as $i => $filename) {
             $this->assertSame($urls[$i], pf_filename2url($filename));
-            $this->assertSame(5, file_put_contents(sys_get_temp_dir() . "/$filename", "test123", LOCK_EX));
+            $this->assertSame(7, file_put_contents(sys_get_temp_dir() . "/$filename", "test123", LOCK_EX));
         }
     }
 }
