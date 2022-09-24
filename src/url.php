@@ -40,15 +40,3 @@ if (!function_exists('pf_get_full_url')) {
         return $protocol . '://' . $_SERVER['SERVER_NAME'] . $port . $path;
     }
 }
-
-if (!function_exists('pf_url_path_match_or_starts_with')) {
-    function pf_url_path_match_or_starts_with(string $url = null): ?string
-    {
-        if ($url === null) {
-            $url = pf_get_full_url();
-        }
-
-        return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";;
-    }
-}
-
