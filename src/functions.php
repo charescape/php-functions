@@ -178,11 +178,11 @@ if (!function_exists('pf_url2filename')) {
         }
 
         return u($url)
-            ->replace('/', '..SS..')
-            ->replace('?', '..QQ..')
-            ->replace('&', '..AA..')
-            ->replace('=', '..EE..')
-            ->replace('#', '..HH..')
+            ->replace('/', '..S..')
+            ->replace('?', '..Q..')
+            ->replace('&', '..A..')
+            ->replace('=', '..E..')
+            ->replace('#', '..H..')
             ->toString();
     }
 }
@@ -193,11 +193,11 @@ if (!function_exists('pf_filename2url')) {
         return u($filename)
             ->replace('https---', 'https://')
             ->replace('http---', 'http://')
-            ->replace('..SS..', '/')
-            ->replace('..QQ..', '?')
-            ->replace('..AA..', '&')
-            ->replace('..EE..', '=')
-            ->replace('..HH..', '#')
+            ->replace('..S..', '/')
+            ->replace('..Q..', '?')
+            ->replace('..A..', '&')
+            ->replace('..E..', '=')
+            ->replace('..H..', '#')
             ->toString();
     }
 }

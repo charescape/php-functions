@@ -51,7 +51,7 @@ class FunctionsTest extends TestCase {
              'http://www.bing.com/search/abc/efg/xyz.html?mnid=#mnId#',
         ];
         $filenames = [
-            'abc',
+            'https---www.bing.com..S..search..Q..q..E..php..A..form..E..QBRE..A..sp..E..-1..A..sc..E..7-15..A..sk..E....A..ghpl..E..',
              '123',
         ];
 
