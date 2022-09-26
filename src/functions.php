@@ -178,8 +178,8 @@ if (!function_exists('pf_url2filename')) {
         }
 
         return u($url)
-                ->replace('?', '@@')
-                ->replace('/', '((')
+                ->replace('?', '..Q..')
+                ->replace('/', '..S..')
                 ->toString();
     }
 }
@@ -190,8 +190,8 @@ if (!function_exists('pf_filename2url')) {
         return u($filename)
                 ->replace('https---', 'https://')
                 ->replace('http---', 'http://')
-                ->replace('@@', '?')
-                ->replace('((', '/')
+                ->replace('..Q..', '?')
+                ->replace('..S..', '/')
                 ->toString();
     }
 }
