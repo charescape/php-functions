@@ -162,25 +162,28 @@ if (!function_exists('pf_with_round_brackets')) {
 }
 
 if (!function_exists('pf_url2filename')) {
-    function pf_url2filename(string $url): string
+    function pf_url2filename(string $url, bool $keep_protocol = true): string
     {
         if (filter_var($url, FILTER_VALIDATE_URL) === false) {
             throw new InvalidArgumentException("Invalid URL: [$url]");
         }
 
         $url = u($url)
-            ->replace('https://', 'https---')
-            ->replace('http://', 'http---')
+            ->replace('https://', $keep_protocol ? 'https---' : '')
+            ->replace('http://', $keep_protocol ? 'http---' : '')
             ->toString();
 
-        if (!preg_match('#^[a-zA-Z0-9\-_./?=&]+$#', $url)) {
+        if (!preg_match('/^[a-zA-Z0-9\-_.\/?=&#]+$/', $url)) {
             throw new InvalidArgumentException("URL contains unspecified special characters: [$url]");
         }
 
         return u($url)
-                ->replace('?', '..Q..')
-                ->replace('/', '..S..')
-                ->toString();
+            ->replace('/', '..SS..')
+            ->replace('?', '..QQ..')
+            ->replace('&', '..AA..')
+            ->replace('=', '..EE..')
+            ->replace('#', '..HH..')
+            ->toString();
     }
 }
 
@@ -188,10 +191,13 @@ if (!function_exists('pf_filename2url')) {
     function pf_filename2url(string $filename): string
     {
         return u($filename)
-                ->replace('https---', 'https://')
-                ->replace('http---', 'http://')
-                ->replace('..Q..', '?')
-                ->replace('..S..', '/')
-                ->toString();
+            ->replace('https---', 'https://')
+            ->replace('http---', 'http://')
+            ->replace('..SS..', '/')
+            ->replace('..QQ..', '?')
+            ->replace('..AA..', '&')
+            ->replace('..EE..', '=')
+            ->replace('..HH..', '#')
+            ->toString();
     }
 }
