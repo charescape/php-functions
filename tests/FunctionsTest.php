@@ -59,6 +59,11 @@ class FunctionsTest extends TestCase {
             $this->assertSame($filenames[$i], pf_url2filename($url));
         }
 
+        $this->assertSame(
+            'www.bing.com..S..search..S..abc..S..efg..S..xyz.html..Q..mnid..E....H..mnId..H..',
+            pf_url2filename('http://www.bing.com/search/abc/efg/xyz.html?mnid=#mnId#', false)
+        );
+
         foreach ($filenames as $i => $filename) {
             $this->assertSame($urls[$i], pf_filename2url($filename));
             $this->assertSame(7, file_put_contents(sys_get_temp_dir() . "/$filename", "test123", LOCK_EX));
