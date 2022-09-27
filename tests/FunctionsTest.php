@@ -51,8 +51,8 @@ class FunctionsTest extends TestCase {
              'http://www.bing.com/search/abc/efg/xyz.html?mnid=#mnId#',
         ];
         $filenames = [
-            'http---www.bing.com..S..search..S..abc..S..efg..S..xyz.html..Q..mnid..E....H..mnId..H..',
-             '123',
+            'abc',
+             'http---www.bing.com..S..search..S..abc..S..efg..S..xyz.html..Q..mnid..E....H..mnId..H..',
         ];
 
         foreach ($urls as $i => $url) {
