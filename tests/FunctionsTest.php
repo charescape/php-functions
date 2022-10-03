@@ -47,11 +47,13 @@ class FunctionsTest extends TestCase {
     public function test_pf_numeric_to_int()
     {
         $this->assertSame(0, pf_numeric_to_int('0'));
+        $this->assertSame(0, pf_numeric_to_int('-0'));
         $this->assertSame(3, pf_numeric_to_int('3'));
         $this->assertSame(123, pf_numeric_to_int('123'));
         $this->assertSame(-123, pf_numeric_to_int('-123'));
         $this->assertSame('1,234', pf_numeric_to_int('1,234'));
         $this->assertSame('0123', pf_numeric_to_int('0123'));
+        $this->assertSame('-0123', pf_numeric_to_int('-0123'));
         $this->assertSame('123.45', pf_numeric_to_int('123.45'));
     }
 

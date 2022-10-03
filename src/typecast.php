@@ -55,10 +55,16 @@ if (!function_exists('pf_string_argument')) {
 if (!function_exists('pf_numeric_to_int')) {
     function pf_numeric_to_int($value)
     {
+        if ($value === '0' || $value === '-0') {
+            return 0;
+        }
+
         if (
             is_string($value)
             && is_numeric($value)
             && (mb_strpos_utf8($value, '.') === false)
+            && (mb_strpos_utf8($value, '0') !== 0)
+            && (mb_strpos_utf8($value, '-0') !== 0)
         ) {
             return (int) $value;
         }
