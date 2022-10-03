@@ -51,3 +51,18 @@ if (!function_exists('pf_string_argument')) {
         return $value;
     }
 }
+
+if (!function_exists('pf_numeric_to_int')) {
+    function pf_numeric_to_int($value)
+    {
+        if (
+            is_string($value)
+            && is_numeric($value)
+            && (mb_strpos_utf8($value, '.') === false)
+        ) {
+            return (int) $value;
+        }
+
+        return $value;
+    }
+}
