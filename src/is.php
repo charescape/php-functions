@@ -51,13 +51,13 @@ if (!function_exists('pf_is_array_empty')) {
 if (!function_exists('pf_is_true')) {
     function pf_is_true($value): bool
     {
-        return in_array($value, [true, 1, 'true', '1', 'True', 'TRUE', 'on', 'On', 'ON'], true);
+        return in_array($value, [true, 1, 'true', '1', 'True', 'TRUE', 'on', 'On', 'ON', 'Yes', 'yes', 'YES'], true);
     }
 }
 
 if (!function_exists('pf_is_false')) {
     function pf_is_false($value): bool
     {
-        return in_array($value, [false, 0, 'false', '0', 'False', 'FALSE', 'off', 'Off', 'OFF'], true);
+        return in_array($value, [false, 0, 'false', '0', 'False', 'FALSE', 'off', 'Off', 'OFF', 'No', 'no', 'NO'], true);
     }
 }
