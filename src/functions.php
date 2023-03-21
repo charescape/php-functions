@@ -67,6 +67,12 @@ if (!function_exists('json_encode_320')) {
     }
 }
 
+if (!function_exists('json_encode_320_pretty')) {
+    function json_encode_320_pretty($value): string {
+        return json_encode($value, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
+    }
+}
+
 if (!function_exists('json_decode_320')) {
     function json_decode_320(string $value): array {
         return json_decode($value, true, 512, JSON_THROW_ON_ERROR);
