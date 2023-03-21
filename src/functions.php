@@ -62,18 +62,30 @@ if (!function_exists('pf_minify_html')) {
 }
 
 if (!function_exists('json_encode_320')) {
+    /**
+     * @param mixed $value
+     * @return string
+     */
     function json_encode_320($value): string {
         return json_encode($value, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
     }
 }
 
 if (!function_exists('json_encode_320_pretty')) {
+    /**
+     * @param mixed $value
+     * @return string
+     */
     function json_encode_320_pretty($value): string {
         return json_encode($value, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
     }
 }
 
 if (!function_exists('json_decode_320')) {
+    /**
+     * @param string $value
+     * @return array
+     */
     function json_decode_320(string $value): array {
         return json_decode($value, true, 512, JSON_THROW_ON_ERROR);
     }
