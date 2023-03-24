@@ -26,6 +26,11 @@ class FunctionsTest extends TestCase {
         $this->assertSame(date('Y-m-d H:i:s', $timestamp + 3600), pf_date_format($timestamp + 3600));
     }
 
+    public function test_pf_posix_username()
+    {
+        $this->assertSame('root', pf_posix_username());
+    }
+
     public function test_pf_with_round_brackets()
     {
         $this->assertSame('（你好）', pf_with_round_brackets('你好'));

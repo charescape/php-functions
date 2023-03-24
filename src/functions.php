@@ -166,6 +166,20 @@ if (!function_exists('pf_date_format')) {
     }
 }
 
+if (!function_exists('pf_posix_username')) {
+    function pf_posix_username(?string $defaultValue = null): ?string {
+        if (function_exists('posix_getpwuid') && function_exists('posix_geteuid')) {
+            $userinfo = posix_getpwuid(posix_geteuid());
+
+            if (isset($userinfo['name'])) {
+                return $userinfo['name'];
+            }
+        }
+
+        return $defaultValue;
+    }
+}
+
 if (!function_exists('pf_with_round_brackets')) {
     function pf_with_round_brackets($value, bool $is_pinyin = true): string {
         $left = $is_pinyin ? '（' : '(';
