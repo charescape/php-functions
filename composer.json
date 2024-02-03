@@ -28,7 +28,8 @@
         "files": [
             "src/functions.php",
             "src/is.php",
-            "src/typecast.php"
+            "src/typecast.php",
+            "src/internal.php"
         ]
     },
     "autoload-dev": {
