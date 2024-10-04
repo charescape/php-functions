@@ -7,6 +7,13 @@ namespace Charescape\PhpFunctions\Tests;
 use PHPUnit\Framework\TestCase;
 
 class FunctionsTest extends TestCase {
+    public function test_pf_number_format()
+    {
+        $this->assertSame('33.33', pf_number_format(100 / 3, 2));
+        $this->assertSame('33.333', pf_number_format(100 / 3, 3));
+        $this->assertSame('33', pf_number_format(100 / 3, 0));
+    }
+
     public function test_pf_mt_rand_without4()
     {
         $this->assertIsInt(pf_mt_rand_without4(100000, 999999));

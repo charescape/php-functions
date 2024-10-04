@@ -233,3 +233,9 @@ if (!function_exists('pf_filename2url')) {
             ->toString();
     }
 }
+
+if (!function_exists('pf_number_format')) {
+    function pf_number_format(float $number, int $decimals): string {
+        return number_format($number, $decimals, '.', '');
+    }
+}
