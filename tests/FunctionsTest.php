@@ -35,7 +35,7 @@ class FunctionsTest extends TestCase {
 
     public function test_pf_posix_username()
     {
-        $this->assertSame('root', pf_posix_username());
+        $this->assertSame('runner', pf_posix_username());
     }
 
     public function test_pf_with_round_brackets()
