@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 class FunctionsTest extends TestCase {
     public function test_pf_git_last_modified_timestamp()
     {
-        $this->assertSame(555, pf_git_last_modified_timestamp(
+        $this->assertSame(1729269956, pf_git_last_modified_timestamp(
             dirname(__DIR__),
             'tests/git-do-not-modify.txt'
         ));
