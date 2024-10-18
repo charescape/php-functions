@@ -7,6 +7,14 @@ namespace Charescape\PhpFunctions\Tests;
 use PHPUnit\Framework\TestCase;
 
 class FunctionsTest extends TestCase {
+    public function test_pf_git_last_modified_timestamp()
+    {
+        $this->assertSame(555, pf_git_last_modified_timestamp(
+            dirname(__DIR__),
+            'tests/git-do-not-modify.txt'
+        ));
+    }
+
     public function test_pf_number_format()
     {
         $this->assertSame('33.33', pf_number_format(100 / 3, 2));

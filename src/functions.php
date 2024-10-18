@@ -239,3 +239,19 @@ if (!function_exists('pf_number_format')) {
         return number_format($number, $decimals, '.', '');
     }
 }
+
+if (!function_exists('pf_git_last_modified_timestamp')) {
+    function pf_git_last_modified_timestamp(string $repo, string $file): int|null {
+        $cmd = 'git -C "' . $repo . '"   log -1 --pretty="format:%ct"     "'
+            . $file
+            . '"  2>&1';
+
+        exec($cmd, $git_log_output, $git_log_result_code);
+
+        if ($git_log_result_code === 0 && is_numeric($git_log_output[0] ?? null)) {
+            return (int) $git_log_output[0];
+        }
+
+        return null;
+    }
+}

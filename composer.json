@@ -16,7 +16,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.4.5",
+        "php": ">=8.0",
         "ext-json": "*",
         "ext-mbstring": "*",
         "symfony/string": "^5.4||^6.0||^7.0"
@@ -29,6 +29,7 @@
             "src/functions.php",
             "src/is.php",
             "src/typecast.php",
+            "src/http.php",
             "src/internal.php"
         ]
     },
