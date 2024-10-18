@@ -29,7 +29,6 @@
             "src/functions.php",
             "src/is.php",
             "src/typecast.php",
-            "src/http.php",
             "src/internal.php"
         ]
     },
