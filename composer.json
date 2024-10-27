@@ -22,6 +22,7 @@
         "symfony/string": "^5.4||^6.0||^7.0"
     },
     "require-dev": {
+        "league/commonmark": "^2.5",
         "phpunit/phpunit": "^9.6"
     },
     "autoload": {
@@ -29,7 +30,8 @@
             "src/functions.php",
             "src/is.php",
             "src/typecast.php",
-            "src/internal.php"
+            "src/internal.php",
+            "src/integrations.php"
         ]
     },
     "autoload-dev": {
