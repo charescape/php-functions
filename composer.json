@@ -19,6 +19,7 @@
         "php": ">=8.0",
         "ext-json": "*",
         "ext-mbstring": "*",
+        "symfony/yaml": "^5.4||^6.0||^7.0",
         "symfony/string": "^5.4||^6.0||^7.0"
     },
     "require-dev": {
