@@ -9,6 +9,9 @@ return (new PhpCsFixer\Config())
         '@Symfony' => true,
         '@Symfony:risky' => true,
         'yoda_style' => false,
+        'curly_braces_position' => [
+            'functions_opening_brace' => 'same_line', // 函数左大括号不换行
+        ],
         'concat_space' => ['spacing' => 'one'],
         'nullable_type_declaration' => ['syntax' => 'union'],
         'single_quote' => false,
