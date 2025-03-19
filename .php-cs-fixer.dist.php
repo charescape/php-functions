@@ -20,5 +20,4 @@ return (new PhpCsFixer\Config())
         PhpCsFixer\Finder::create()
             ->files()
             ->name('*.php')
-            ->in(__DIR__ . '/app/Http/Controllers')
     );
