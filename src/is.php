@@ -23,8 +23,7 @@ if (!function_exists('pf_is_string_empty')) {
 }
 
 if (!function_exists('pf_is_array_filled')) {
-    function pf_is_array_filled($value): bool
-    {
+    function pf_is_array_filled($value): bool {
         if (is_array($value)) {
             $n = count($value);
 
@@ -38,8 +37,7 @@ if (!function_exists('pf_is_array_filled')) {
 }
 
 if (!function_exists('pf_is_array_empty')) {
-    function pf_is_array_empty($value): bool
-    {
+    function pf_is_array_empty($value): bool {
         if (is_array($value)) {
             return count($value) === 0;
         }
@@ -49,15 +47,13 @@ if (!function_exists('pf_is_array_empty')) {
 }
 
 if (!function_exists('pf_is_true')) {
-    function pf_is_true($value): bool
-    {
+    function pf_is_true($value): bool {
         return in_array($value, [true, 1, 'true', '1', 'True', 'TRUE', 'on', 'On', 'ON', 'Yes', 'yes', 'YES'], true);
     }
 }
 
 if (!function_exists('pf_is_false')) {
-    function pf_is_false($value): bool
-    {
+    function pf_is_false($value): bool {
         return in_array($value, [false, 0, 'false', '0', 'False', 'FALSE', 'off', 'Off', 'OFF', 'No', 'no', 'NO'], true);
     }
 }

@@ -3,8 +3,7 @@
 declare(strict_types=1);
 
 if (!function_exists('pf_get_full_url')) {
-    function pf_get_full_url(): ?string
-    {
+    function pf_get_full_url(): string|null {
         if (!isset($_SERVER['SERVER_NAME'])) {
             return null;
         }

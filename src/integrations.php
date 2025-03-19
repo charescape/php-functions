@@ -12,8 +12,7 @@ use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 use League\CommonMark\MarkdownConverter;
 
 if (!function_exists('pf_gfm')) {
-    function pf_gfm(): MarkdownConverter
-    {
+    function pf_gfm(): MarkdownConverter {
         // https://commonmark.thephpleague.com/2.6/extensions/github-flavored-markdown/
         $environment = new Environment([]);
         $environment->addExtension(new CommonMarkCoreExtension());
@@ -24,8 +23,7 @@ if (!function_exists('pf_gfm')) {
 }
 
 if (!function_exists('pf_gfm_ff_default_config')) {
-    function pf_gfm_ff_default_config(): array
-    {
+    function pf_gfm_ff_default_config(): array {
         return [
             // https://commonmark.thephpleague.com/2.6/extensions/table-of-contents/
             'table_of_contents' => [
@@ -49,7 +47,6 @@ if (!function_exists('pf_gfm_ff_default_config')) {
             ],
             // https://commonmark.thephpleague.com/2.6/extensions/mentions/
             'mentions' => [
-
             ],
             'heading_permalink' => [
                 'html_class' => 'gfm-heading-permalink',
@@ -72,8 +69,7 @@ if (!function_exists('pf_gfm_ff_default_config')) {
 }
 
 if (!function_exists('pf_gfm_ff')) {
-    function pf_gfm_ff(array $config = []): MarkdownConverter
-    {
+    function pf_gfm_ff(array $config = []): MarkdownConverter {
         if (pf_is_array_empty($config)) {
             $config = pf_gfm_ff_default_config();
         }

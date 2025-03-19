@@ -8,8 +8,7 @@ if (!function_exists('_is_empty_string')) {
     /**
      * @deprecated since 1.0.0
      */
-    function _is_empty_string($value)
-    {
+    function _is_empty_string($value) {
         return is_string($value) && trim($value) === '';
     }
 }
@@ -27,8 +26,7 @@ if (!function_exists('_is_full_string')) {
     /**
      * @deprecated since 1.0.0
      */
-    function _is_full_string($value)
-    {
+    function _is_full_string($value) {
         return is_string($value) && trim($value) !== '';
     }
 }
@@ -62,42 +60,31 @@ if (!function_exists('pf_minify_html')) {
 }
 
 if (!function_exists('json_encode_320')) {
-    /**
-     * @param mixed $value
-     * @return string
-     */
     function json_encode_320($value): string {
-        return json_encode($value, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+        return json_encode($value, \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE | \JSON_THROW_ON_ERROR);
     }
 }
 
 if (!function_exists('json_encode_320_pretty')) {
-    /**
-     * @param mixed $value
-     * @return string
-     */
     function json_encode_320_pretty($value): string {
-        return json_encode($value, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
+        return json_encode($value, \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE | \JSON_THROW_ON_ERROR | \JSON_PRETTY_PRINT);
     }
 }
 
 if (!function_exists('json_decode_320')) {
-    /**
-     * @param string $value
-     * @return array
-     */
     function json_decode_320(string $value): array {
-        return json_decode($value, true, 512, JSON_THROW_ON_ERROR);
+        return json_decode($value, true, 512, \JSON_THROW_ON_ERROR);
     }
 }
 
 if (!function_exists('mb_strpos_utf8')) {
     /**
-     * @param string $haystack The string being checked.
-     * @param string $needle The string to find in haystack.
+     * @param string $haystack the string being checked
+     * @param string $needle   the string to find in haystack
+     *
      * @return false|int Returns the numeric position of the first occurrence of needle in the haystack string. If needle is not found, it returns false.
      */
-    function mb_strpos_utf8(string $haystack , string $needle) {
+    function mb_strpos_utf8(string $haystack, string $needle) {
         return mb_strpos($haystack, $needle, 0, 'UTF-8');
     }
 }
@@ -118,7 +105,7 @@ if (!function_exists('pf_query_string')) {
 
 if (!function_exists('pf_http_build_query_rfc3986')) {
     function pf_http_build_query_rfc3986(array $query): string {
-        return http_build_query($query, '', '&', PHP_QUERY_RFC3986);
+        return http_build_query($query, '', '&', \PHP_QUERY_RFC3986);
     }
 }
 
@@ -150,14 +137,14 @@ if (!function_exists('pf_mt_rand_without4')) {
     function pf_mt_rand_without4(int $min, int $max): int {
         do {
             $value = mt_rand($min, $max);
-        } while (strpos((string) $value, '4') !== false);
+        } while (str_contains((string) $value, '4'));
 
         return $value;
     }
 }
 
 if (!function_exists('pf_date_format')) {
-    function pf_date_format(int $timestamp = null): string {
+    function pf_date_format(int|null $timestamp = null): string {
         if ($timestamp === null) {
             $timestamp = time();
         }
@@ -167,7 +154,7 @@ if (!function_exists('pf_date_format')) {
 }
 
 if (!function_exists('pf_posix_username')) {
-    function pf_posix_username(?string $defaultValue = null): ?string {
+    function pf_posix_username(string|null $defaultValue = null): string|null {
         if (function_exists('posix_getpwuid') && function_exists('posix_geteuid')) {
             $userinfo = posix_getpwuid(posix_geteuid());
 
@@ -194,9 +181,8 @@ if (!function_exists('pf_with_round_brackets')) {
 }
 
 if (!function_exists('pf_url2filename')) {
-    function pf_url2filename(string $url, bool $keep_protocol = true): string
-    {
-        if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+    function pf_url2filename(string $url, bool $keep_protocol = true): string {
+        if (filter_var($url, \FILTER_VALIDATE_URL) === false) {
             throw new InvalidArgumentException("Invalid URL: [$url]");
         }
 
@@ -220,8 +206,7 @@ if (!function_exists('pf_url2filename')) {
 }
 
 if (!function_exists('pf_filename2url')) {
-    function pf_filename2url(string $filename): string
-    {
+    function pf_filename2url(string $filename): string {
         return u($filename)
             ->replace('https---', 'https://')
             ->replace('http---', 'http://')
