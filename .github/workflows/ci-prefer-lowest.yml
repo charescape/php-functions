@@ -31,6 +31,6 @@ jobs:
           tools: composer
 
       - run: rm -f composer.lock
-      - run: composer install --prefer-lowest --no-interaction --ansi
+      - run: composer update --prefer-lowest --prefer-stable --no-interaction --ansi
 
       - run: vendor/bin/phpunit --colors=always
