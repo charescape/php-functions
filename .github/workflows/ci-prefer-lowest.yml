@@ -1,0 +1,36 @@
+on:
+  - pull_request
+  - push
+
+name: ci
+
+jobs:
+  tests:
+    name: PHP ${{ matrix.php }}
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        php:
+          - "8.2"
+          - "8.3"
+          - "8.4"
+          - "8.5"
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer
+
+      - run: rm -f composer.lock
+      - run: composer install --prefer-lowest --no-interaction --ansi
+
+      - run: vendor/bin/phpunit --colors=always
